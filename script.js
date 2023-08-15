@@ -38,10 +38,10 @@ const skillElements = document.querySelectorAll("#page2 .skill-container p");
                 start: "top bottom",
                 end: "bottom top",
                 scroller: `#main`,
-                scrub: 0.5,
+                scrub: 0.8,
             },
             color: "#00ff00",
-            stagger: 0.2, // Adjust the value for the stagger effect
+            stagger: 0.1, // Adjust the value for the stagger effect
         });
 
 const skillimg = document.querySelectorAll("#page2 .image-container img");
@@ -56,7 +56,7 @@ gsap.to(skillimg, {
     },
     color: "#00ff00",
     opacity: 1,
-    stagger: 0.5, // Adjust the value for the stagger effect
+    stagger: 0.8, // Adjust the value for the stagger effect
 });
 
 const eduElements = document.querySelectorAll("#page4 .edu-container h1");
@@ -260,6 +260,17 @@ animatedBorder.classList.add('animated-border');
 const right9Center = document.querySelector('.right9-center');
 right9Center.appendChild(animatedBorder);
 
+const imgElement = right9Center.querySelector('img');
+
+function updateBorderDimensions() {
+  animatedBorder.style.width = `${imgElement.offsetWidth}px`;
+  animatedBorder.style.height = `${imgElement.offsetHeight}px`;
+}
+
+imgElement.addEventListener('load', updateBorderDimensions);
+
+updateBorderDimensions();
+
 gsap.to(animatedBorder, {
     scrollTrigger: {
         trigger: ".right9",
@@ -281,11 +292,22 @@ document.addEventListener("DOMContentLoaded", function() {
   downloadButton.addEventListener("click", function() {
       const link = document.createElement("a");
       link.href = resumePath;
-      link.target = "_blank"; // Open in a new tab
-      link.download = "rishabhs-resume.pdf"; // Specify the downloaded file name
+      link.target = "_blank";
+      link.download = "rishabhs-resume.pdf";
 
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
   });
 });
+
+
+//loading spinner
+const loadingSpinner = document.getElementById("loading-spinner");
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    loadingSpinner.style.display = "none";
+  }, 500);
+});
+
