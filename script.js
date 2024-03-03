@@ -1,8 +1,6 @@
 function loco(){
     gsap.registerPlugin(ScrollTrigger);
 
-// Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
-
 const locoScroll = new LocomotiveScroll({
   el: document.querySelector("#main"),
   smooth: true
@@ -18,7 +16,6 @@ ScrollTrigger.scrollerProxy("#main", {
   getBoundingClientRect() {
     return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
   },
-  // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
   pinType: document.querySelector("#main").style.transform ? "transform" : "fixed"
 });
 
@@ -56,7 +53,7 @@ gsap.to(skillimg, {
     },
     color: "#00ff00",
     opacity: 1,
-    stagger: 0.8, // Adjust the value for the stagger effect
+    stagger: 0.8,
 });
 
 const eduElements = document.querySelectorAll("#page4 .edu-container h1");
@@ -70,7 +67,7 @@ const eduElements = document.querySelectorAll("#page4 .edu-container h1");
                 scrub: 0.5,
             },
             color: "#00ff00",
-            stagger: 0.2, // Adjust the value for the stagger effect
+            stagger: 0.2,
         });
 
 function canvas1(){
@@ -237,7 +234,7 @@ const qualityElements = document.querySelectorAll("#page6 .quality-container h1"
                 scrub: 0.5,
             },
             color: "#00ff00",
-            stagger: 0.5, // Adjust the value for the stagger effect
+            stagger: 0.5,
         });
 
 const qualityLinkElements = document.querySelectorAll("#page6 .quality-container a");
@@ -251,7 +248,7 @@ gsap.to(qualityLinkElements, {
         scrub: 0.2,
     },
     color: "#ffffff",
-    stagger: 0.5, // Adjust the value for the stagger effect
+    stagger: 0.5,
 });
 
 const animatedBorder = document.createElement('div');
@@ -286,8 +283,7 @@ gsap.to(animatedBorder, {
 
 document.addEventListener("DOMContentLoaded", function() {
   const downloadButton = document.querySelector(".resume-btn");
-
-  const resumePath = "./assets/Rishabh's Resume (5).pdf";
+  const resumePath = "./assets/resume.pdf";
 
   downloadButton.addEventListener("click", function() {
       const link = document.createElement("a");
